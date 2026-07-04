@@ -1,72 +1,56 @@
-# Hi, I'm Anas 👋
+# Hi, I'm Anas
 
-**AI Engineer** — I build the parts of AI systems that demos skip: evaluation, cost control, observability, guardrails, and human-in-the-loop safety.
+I'm an AI engineer. Most of my work is about the unglamorous parts of AI systems: evaluation, cost control, observability, guardrails, and knowing when to put a human in the loop.
 
-📧 [anasamiar8@gmail.com](mailto:anasamiar8@gmail.com) · 💼 [LinkedIn](https://www.linkedin.com/in/anasamiar/)
+Contact: [anasamiar8@gmail.com](mailto:anasamiar8@gmail.com) / [LinkedIn](https://www.linkedin.com/in/anasamiar/)
 
-**16 production-minded AI engineering projects**, one thesis running through all of them:
+Below are 16 projects I built around one idea: an AI output is a claim, not a fact, until you verify it. Each repo runs out of the box (usually just `pip install pydantic`), and has a README plus a STORY.md explaining the design decisions.
 
-> *AI output is a claim, not a fact, until it's verified — and AI systems earn autonomy by proving they know when they can't be trusted.*
+## Evaluation and correctness
 
-Every project runs out of the box (`pip install pydantic` is usually all you need), has a full README, a STORY.md with the design decisions, and an interview-style build guide PDF.
-
----
-
-## 🎯 Correctness & Evaluation
-*How do you know an LLM output is good — and stays good?*
-
-| Project | The one-liner |
+| Project | What it does |
 |---|---|
-| [Model Regression Detection](https://github.com/Anas-Amiar/Project-1-model-regression-detector) | CI gate that blocks prompt changes when accuracy drops — unit tests for LLM behavior, wired into GitHub Actions |
-| [LLM Output Arbitration](https://github.com/Anas-Amiar/Project-7-llm-output-arbitration) | Three critics with different blind spots audit every output; an adjudicator resolves their disagreements |
-| [Eval Dataset Generator](https://github.com/Anas-Amiar/Project-14-eval-dataset-generator) | Mines production logs into a self-growing eval dataset — injection attempts auto-labeled as adversarial test cases |
-| [Prompt A/B Testing Platform](https://github.com/Anas-Amiar/Project-10-prompt-ab-platform) | Git-for-prompts + traffic splitting; refuses to declare winners without statistical significance (p=0.68 → keep collecting; p=0.014 → ship) |
+| [Model Regression Detection](https://github.com/Anas-Amiar/Project-1-model-regression-detector) | A CI gate that runs prompt changes against a golden dataset and blocks the merge if accuracy drops. Wired into GitHub Actions. |
+| [LLM Output Arbitration](https://github.com/Anas-Amiar/Project-7-llm-output-arbitration) | Three critics with different detection strategies review every output, and an adjudicator resolves their disagreements into one verdict. |
+| [Eval Dataset Generator](https://github.com/Anas-Amiar/Project-14-eval-dataset-generator) | Mines production logs into eval test cases. Prompt injections and gibberish get auto-labeled as adversarial cases instead of being thrown away. |
+| [Prompt A/B Testing Platform](https://github.com/Anas-Amiar/Project-10-prompt-ab-platform) | Version control for prompts plus traffic splitting. It refused to declare a winner at p=0.68 and made me collect 12,000 samples to get p=0.014. |
 
-## 💰 Cost & Performance
-*The economics of running LLMs at scale.*
+## Cost and performance
 
-| Project | The one-liner |
+| Project | What it does |
 |---|---|
-| [LLM Cost Autopilot](https://github.com/Anas-Amiar/Project-2-llm-cost-autopilot) | Routes each request to the cheapest capable model, verifies quality, auto-escalates — 41% cost cut, zero quality loss |
-| [Semantic Caching Layer](https://github.com/Anas-Amiar/Project-8-semantic-cache) | Caches on meaning, not text — 89.7% cost savings, with the threshold tradeoff measured against ground-truth wrong-hit rates |
-| [LLM Gateway](https://github.com/Anas-Amiar/Project-12-llm-gateway) | Per-team rate limits, budget caps, multi-provider fallback, circuit breakers — a full provider outage with zero failed user requests |
+| [LLM Cost Autopilot](https://github.com/Anas-Amiar/Project-2-llm-cost-autopilot) | Routes each request to the cheapest model that can handle it, checks the answer, and escalates if needed. Cut costs 41% in testing with no quality loss. |
+| [Semantic Caching Layer](https://github.com/Anas-Amiar/Project-8-semantic-cache) | Caches LLM responses by meaning instead of exact text. 89.7% savings in the load test, and I measured when cache hits start returning wrong answers, not just the hit rate. |
+| [LLM Gateway](https://github.com/Anas-Amiar/Project-12-llm-gateway) | Rate limits and budgets per team, fallback across providers, circuit breakers. The demo simulates a full provider outage with zero failed user requests. |
 
-## 🔍 Observability & Reliability
-*When it breaks, know exactly where and why.*
+## Observability
 
-| Project | The one-liner |
+| Project | What it does |
 |---|---|
-| [Failure Forensics Tool](https://github.com/Anas-Amiar/Project-3-failure-forensics-tool) | Traces every pipeline step and finds the *first* failure, not the loudest symptom — a scoped-down LangSmith |
-| [AI Feature Flags](https://github.com/Anas-Amiar/Project-13-ai-feature-flags) | Gradual rollout with quality gates; caught a variant whose mean *beat* baseline but whose worst-10% was disastrous — at 1% rollout |
-| [Self-Healing Docs](https://github.com/Anas-Amiar/Project-6-self-healing-docs) | Detects which doc sections a code change made stale; auto-fixes the mechanical, flags the structural for review |
+| [Failure Forensics Tool](https://github.com/Anas-Amiar/Project-3-failure-forensics-tool) | Traces every step of a multi-step pipeline and points at the first step that broke, not the last one that looked bad. |
+| [AI Feature Flags](https://github.com/Anas-Amiar/Project-13-ai-feature-flags) | Gradual rollouts with quality gates. It caught a variant that beat the baseline on average but was terrible for 10% of users, and rolled it back at 1% exposure. |
+| [Self-Healing Docs](https://github.com/Anas-Amiar/Project-6-self-healing-docs) | Figures out which documentation a code change made stale. Fixes the mechanical cases itself, flags the rest for a human. |
 
-## 🛡️ Trust & Guardrails
-*Shipping AI a compliance team would approve.*
+## Guardrails
 
-| Project | The one-liner |
+| Project | What it does |
 |---|---|
-| [Text-to-SQL with Guardrails](https://github.com/Anas-Amiar/Project-9-text-to-sql-guardrails) | Blocks the DELETE an obedient LLM will happily write; back-translates SQL to catch answers to the wrong question |
-| [RAG with Citation Verification](https://github.com/Anas-Amiar/Project-5-rag-document-qa) | Two-axis grounding check: is the answer supported by the sources, and did retrieval even address the question? |
-| [OCR Document Intelligence](https://github.com/Anas-Amiar/OCR) | Per-field confidence routing: shaky fields go to human review, corrections feed an accuracy benchmark |
+| [Text-to-SQL with Guardrails](https://github.com/Anas-Amiar/Project-9-text-to-sql-guardrails) | Blocks the DELETE statement an LLM will happily write if you ask nicely, and back-translates generated SQL to check it answers the question that was actually asked. |
+| [RAG with Citation Verification](https://github.com/Anas-Amiar/Project-5-rag-document-qa) | Checks two things before returning an answer: is it supported by the retrieved sources, and did retrieval even find content about the question. |
+| [OCR Document Intelligence](https://github.com/Anas-Amiar/OCR) | Scores every extracted field individually. Shaky fields go to a human review queue, and corrections feed an accuracy benchmark. |
 
-## 🤖 Agents & Training
-*The frontier — with the safety rails built in.*
+## Agents and training
 
-| Project | The one-liner |
+| Project | What it does |
 |---|---|
-| [Agent Orchestration System](https://github.com/Anas-Amiar/Project-15-agent-orchestration) | Supervisor/specialist/reviewer agents, hard human-approval gates on sensitive ops, and memory that measurably reduces repeat mistakes |
-| [AI Data Agents](https://github.com/Anas-Amiar/Project-16-ai-data-agents) | Four functional tool-using agents (analyst / scientist / AI engineer / ML engineer) on a sandboxed local agent loop, verified offline |
-| [LoRA Fine-Tuning Pipeline](https://github.com/Anas-Amiar/Project-11-lora-finetune-pipeline) | The 95% around the training call: data hygiene, sweeps, early stopping — and a probe that catches catastrophic forgetting |
+| [Agent Orchestration System](https://github.com/Anas-Amiar/Project-15-agent-orchestration) | A supervisor delegates to specialist agents, a reviewer validates their work, sensitive actions need human approval, and lessons get saved so mistakes don't repeat. |
+| [AI Data Agents](https://github.com/Anas-Amiar/Project-16-ai-data-agents) | Four working tool-using agents (data analyst, data scientist, AI engineer, ML engineer) on a sandboxed agent loop I can test offline. |
+| [LoRA Fine-Tuning Pipeline](https://github.com/Anas-Amiar/Project-11-lora-finetune-pipeline) | Everything around the training call: data deduplication, hyperparameter sweeps, early stopping, and a probe that catches catastrophic forgetting. |
 
----
+## Notes on how these are built
 
-## 🛠️ How these are built
+Python, Pydantic, scikit-learn, FastAPI, GitHub Actions, SQLite, and the Anthropic/OpenAI SDKs.
 
-Python 3.11+ · Pydantic v2 · scikit-learn · FastAPI patterns · GitHub Actions · SQLite · Anthropic/OpenAI SDKs
+Most projects run in mock mode by default: deterministic fake models with realistic failure behavior, and the real LLM call isolated behind one function. I did that on purpose. It means the whole system is testable for free, and the expensive part is a one-line swap when you go live.
 
-Mock-first by design: every pipeline runs deterministically with zero API keys, with the real-LLM swap point isolated to one function. That's a deliberate architecture decision — testable systems first, expensive calls last.
-
-## 📫 Contact
-
-- 📧 anasamiar8@gmail.com
-- 💼 [LinkedIn](https://www.linkedin.com/in/anasamiar/)
+If you want the short version of any project, each repo has a STORY.md written as a two-minute walkthrough.
