@@ -67,4 +67,4 @@ Mock-first by design: every pipeline runs deterministically with zero API keys, 
 ## 📫 Contact
 
 - 📧 anasamiar8@gmail.com
-- 💼 [LinkedIn](https://www.linkedin.com/in/anas-amiar)
+- 💼 [LinkedIn](https://www.linkedin.com/in/anasamiar/)
