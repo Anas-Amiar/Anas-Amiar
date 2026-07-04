@@ -2,6 +2,8 @@
 
 **AI Engineer** — I build the parts of AI systems that demos skip: evaluation, cost control, observability, guardrails, and human-in-the-loop safety.
 
+📧 [anasamiar8@gmail.com](mailto:anasamiar8@gmail.com) · 💼 [LinkedIn](https://www.linkedin.com/in/anasamiar/)
+
 **16 production-minded AI engineering projects**, one thesis running through all of them:
 
 > *AI output is a claim, not a fact, until it's verified — and AI systems earn autonomy by proving they know when they can't be trusted.*
