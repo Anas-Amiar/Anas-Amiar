@@ -4,7 +4,7 @@ I'm an AI engineer. Most of my work is about the unglamorous parts of AI systems
 
 Contact: [anasamiar8@gmail.com](mailto:anasamiar8@gmail.com) / [LinkedIn](https://www.linkedin.com/in/anasamiar/)
 
-Below are 16 projects I built around one idea: an AI output is a claim, not a fact, until you verify it. Each repo runs out of the box (usually just `pip install pydantic`), and has a README plus a STORY.md explaining the design decisions.
+Below are 20 projects I built around one idea: an AI output is a claim, not a fact, until you verify it. Sixteen live in their own repos; the four data analytics ones live in folders of this one. Each runs out of the box (usually just `pip install pydantic`), and has a README plus a STORY.md explaining the design decisions.
 
 ## Evaluation and correctness
 
@@ -46,6 +46,17 @@ Below are 16 projects I built around one idea: an AI output is a claim, not a fa
 | [Agent Orchestration System](https://github.com/Anas-Amiar/Project-15-agent-orchestration) | A supervisor delegates to specialist agents, a reviewer validates their work, sensitive actions need human approval, and lessons get saved so mistakes don't repeat. |
 | [AI Data Agents](https://github.com/Anas-Amiar/Project-16-ai-data-agents) | Four working tool-using agents (data analyst, data scientist, AI engineer, ML engineer) on a sandboxed agent loop I can test offline. |
 | [LoRA Fine-Tuning Pipeline](https://github.com/Anas-Amiar/Project-11-lora-finetune-pipeline) | Everything around the training call: data deduplication, hyperparameter sweeps, early stopping, and a probe that catches catastrophic forgetting. |
+
+## Data analytics
+
+The same discipline, applied to data instead of models: a dashboard number is also a claim until the pipeline behind it is verified. These four live in this repo — each folder is self-contained.
+
+| Project | What it does |
+|---|---|
+| [Metric Forensics](./metric-forensics) | Answers "is this KPI drop real, or is the data broken?" by walking the pipeline in execution order and blaming the first broken stage — including the timezone bug that row counts can't see. |
+| [Data Quality Gate](./data-quality-gate) | A CI gate that diffs pipeline output against a golden dataset under a pydantic data contract. It catches a cents-vs-dollars bug that passes every other check — same rows, valid schema — through distribution drift alone. |
+| [A/B Test Honesty Checker](./ab-test-honesty-checker) | Refuses to declare experiment winners from broken traffic splits, peeked p-values, or underpowered samples. In the demo it rejects a "+22% winner" that daily peeking manufactured out of a true null. |
+| [Anomaly Review Queue](./anomaly-review-queue) | Metric alerting with a third verdict: "a human should look." Ambiguous days go to a review queue, and the human answers become a precision benchmark that tunes the thresholds. |
 
 ## Notes on how these are built
 

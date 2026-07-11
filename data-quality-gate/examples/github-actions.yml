@@ -1,0 +1,20 @@
+# Drop this into .github/workflows/ of the repo that owns the pipeline.
+# Any PR whose pipeline output violates the data contract fails the check
+# and can't merge.
+name: data-quality-gate
+
+on:
+  pull_request:
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install pydantic
+      # In CI you run the *changed* pipeline against fixture inputs and gate
+      # its output. The demo scenarios stand in for that here.
+      - run: python -m data_quality_gate --scenario safe_refactor
